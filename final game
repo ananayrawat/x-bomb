@@ -1,0 +1,138 @@
+#include <stdio.h>
+#include<stdlib.h>
+#include<time.h>
+#include<conio.h>
+
+    int rows = 9;
+    int columns = 4;
+    int z;
+    int arr[100];
+    int *ptr2=&arr[100];
+    int a,b,c,d,e,f,g,h,i,j;
+void tablez()
+{
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
+            printf("|\t%d\t", i * columns + j + 1);
+        }
+        printf("|\n_______________________\n"); // Move to the next row
+    }
+
+}
+void first()
+{
+    srand(time(NULL));
+     a=rand()%36;
+     b=rand()%36;
+     c=rand()%36;
+     d=rand()%36;
+     e=rand()%36;
+    f=rand()%36;
+    g=rand()%36;
+     h=rand()%36;
+     i=rand()%36;
+     j=rand()%36;
+    printf("\n%d",a);
+    printf("\t%d",b);
+    printf("\t%d",c);
+    printf("\t%d",d);
+    printf("\t%d",e);
+    printf("\t%d",f);
+    printf("\t%d",g);
+    printf("\t%d",h);
+    printf("\t%d",i);
+    printf("\t%d",j);
+}
+int minez(int *ptr2,int m)
+{
+    int y=0;
+
+    if(arr[m]==a||arr[m]==b||arr[m]==c||arr[m]==d||arr[m]==e||arr[m]==f||arr[m]==g||arr[m]==h||arr[m]==i||arr[m]==j)
+    {
+        printf("\nSad!u popped up a mine\n");
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
+                int k=i*columns+j+1;
+                if(k==a||k==b||k==c||k==d||k==e||k==f||k==g||k==h||k==i||k==j)
+                {
+                    _cprintf("|\t*\t");
+                }
+                else{
+                        printf("|\t%d\t", i * columns + j + 1);
+                }
+        }
+        printf("|\n_______________________\n"); // Move to the next row
+    }
+    y=1;
+
+    }
+    else
+    {
+        printf("\nYou are on a right track\n");
+        printf("\n");
+        printf("\n");
+        printf("\n");
+        for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
+                int k=i*columns+j+1;
+              for(int h=0;h<i+1;h++)
+            {
+            if(i * columns + j + 1==arr[h])
+            {
+                printf("|\tDone\t");
+            }
+            }
+
+
+            printf("|\t%d\t", i * columns + j + 1);
+
+
+        }
+        printf("|\n_______________________\n"); // Move to the next row
+    }
+    }
+    return y;
+
+}
+int main ()
+
+{   int c=1;
+    int r,i;
+
+    labe1:
+    tablez();
+    first();
+for(i=0;i<36;i++)
+{
+
+
+    printf("\nEnter the number u think mine isnt present\n");
+    scanf("%d",&arr[i]);
+    if(minez(arr,i)==1)
+    {
+    printf("Press '1' to retry or '0' to end game\n");
+    scanf("%d",&r);
+    if(c==r)
+    {
+
+        goto labe1;
+    }
+    else
+        {
+        printf("___________________\n|\t\t\t\t\t\t\t|");
+        printf("\n|\t\t\t\t\t\t\t|");
+        printf("\n|\t\t\t\t\t\t\t|");
+        printf("\n|\t\t\tGame Over\t\t\t|");
+        printf("\n|\t\t\t\t\t\t\t|");
+        printf("\n|\t\t\t\t\t\t\t|\n");
+        printf("___________________");
+
+
+        }
+    }
+}
+    return 0;
+
+}
